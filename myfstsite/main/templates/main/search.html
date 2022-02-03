@@ -1,0 +1,34 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Search for notes
+{% endblock %}
+
+
+{% block content %}
+
+<div class="list-group">
+    <h3> Search results for "{{query.search}}" </h3>
+
+    {% for n in notes %}
+        {% if query.search in n.title %}
+            <a href="/{{n.id}}" class="list-group-item list-group-item-action" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{n.title}}</h5>
+                </div>
+                {% if n.text == "" %}
+                    <p class="mb-1"> </p>
+                    <small> The note is empty!</small>
+                {% else %}
+                    <p class="mb-1">{{n.text}}</p>
+                {% endif %}
+                 <small class="text-muted">
+                    updated: {{n.last_update}}
+                 </small>
+            </a>
+        {% endif %}
+    {% endfor %}
+
+</div>
+
+{% endblock %}

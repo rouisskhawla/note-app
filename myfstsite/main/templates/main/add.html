@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Add New Note
+{% endblock %}
+
+
+{% block content %}
+
+<h3>Add Page</h3>
+
+<form method="post" action="/add/" class="form-group">
+    {% csrf_token %}
+     <div class="input-group mb-3">
+         {{form.as_p}}
+         <input class="btn btn-success" type="submit" value="Save Note">
+         <input class="btn btn-light" type="reset" value="Clear">
+     </div>
+
+</form>
+
+{% endblock %}

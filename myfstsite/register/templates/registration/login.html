@@ -1,0 +1,38 @@
+{% extends 'register/baselog.html' %}
+
+
+{% block title %}
+Login
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <div class="border-top pt-3">
+            You Are Already Logged In!<a class="ml-2" href="/logout">Logout</a>
+        </div>
+
+
+    {% else %}
+
+        <form method="POST" class="form-group">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-success">Login</button>
+
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Need an account? <a class="ml-2" href="/register">Sign up</a>
+                </small>
+            </div>
+        </form>
+
+    {% endif %}
+
+
+
+
+{% endblock %}

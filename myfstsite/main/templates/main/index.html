@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Note
+{% endblock %}
+
+{% block content %}
+
+   <div class="card" style="width: 18rem;">
+       <div class="card-body">
+           <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{n.title}}</h5>
+           </div>
+           <p class="cad-text">{{n.text}}</p>
+            <small class="text-muted">
+                 updated: {{n.last_update}}
+            </small>
+       </div>
+
+   </div>
+
+    <div class="input-group mb-3">
+        <a href="/{{n.id}}/update">
+            <input class="btn btn-light" type="button" value="Update"/>
+        </a>
+        <a href="/{{n.id}}/delete">
+            <input class="btn btn-light" type="button" value="Delete"/>
+        </a>
+    </div>
+
+
+{% endblock %}
